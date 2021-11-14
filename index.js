@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const path = require("path")
-const routeProd  = require("./routes/routeprod");
-const routeCart = require("./routes/routecart");
-
-require("./database/db") //DATA BASE
+const routeProd  = require("./routes/routeprod"); // ====> ruta de mongo
+const routeCart = require("./routes/routecart");  // ====> ruta de mongo
+const prodfirebase = require("./routes/prodfirebase") // ====> ruta de firebase
+require("./database/mongodb") //DATA BASE
 
 
 //CONFIGURACION
@@ -16,9 +16,11 @@ app.use(express.json());
 //ARCHIVOS ESTATICOS
 app.use(express.static(path.join(__dirname,'public')))
 
-//RUTAS
+//RUTAS MONGO
 app.use("/products",routeProd)
 app.use("/cart",routeCart);
+//RUTAS FIREBASE
+app.use("/productfb",prodfirebase)
 
 
 app.listen(PORT, () => {
