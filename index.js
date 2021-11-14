@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path")
 const routeProd  = require("./routes/routeprod");
+const routeCart = require("./routes/routecart");
 
 require("./database/db") //DATA BASE
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname,'public')))
 
 //RUTAS
 app.use("/products",routeProd)
+app.use("/cart",routeCart);
 
 
 app.listen(PORT, () => {

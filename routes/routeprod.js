@@ -24,7 +24,6 @@ route.get("/:id",async (req,res)=>{
 
 route.post("/", async (req,res)=>{
     try{
-        console.log(req.body)
         let{name,description,price} = req.body;
         const guardar = new Model({name,description,price});
         await guardar.save()
