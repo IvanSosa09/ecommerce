@@ -27,10 +27,18 @@ route.use(
 
 
 route.get("/",(req,res)=>{
+  return res.json({info:req.session})
   })
 
 route.post("/",(req,res)=>{
-  console.log(req.body);
-})
+  // const {user, pass} = req.body
+  // user && pass ? (req.session.user = user) && (req.session.pass = pass) : res.json("ERROR FALTAN DATOS")
+  let user = req.body.user
+  let pass = req.body.pass
+  req.session.pass = pass
+  req.session.user = user
+  console.log(pass)
+}
+)
 
 module.exports = route;

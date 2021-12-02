@@ -5,6 +5,8 @@ const routeProd  = require("./routes/routeprod"); // ====> ruta de mongo
 const routeCart = require("./routes/routecart");  // ====> ruta de mongo
 const loginsession = require("./routes/login");
 require("./database/mongodb"); //DATA BASE
+const cors = require("cors");
+
 
 
 //CONFIGURACION
@@ -12,7 +14,8 @@ const PORT = process.env.PORT || 8080;
 
 //MIDDLEWARES
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 //ARCHIVOS ESTATICOS
 app.use(express.static(path.join(__dirname,'public')));
