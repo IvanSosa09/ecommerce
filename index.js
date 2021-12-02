@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const routeProd  = require("./routes/routeprod"); // ====> ruta de mongo
 const routeCart = require("./routes/routecart");  // ====> ruta de mongo
-const prodfirebase = require("./routes/prodfirebase"); // ====> ruta de firebase
+const loginsession = require("./routes/login");
 require("./database/mongodb"); //DATA BASE
 
 
@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 //MIDDLEWARES
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 //ARCHIVOS ESTATICOS
 app.use(express.static(path.join(__dirname,'public')));
@@ -19,8 +20,7 @@ app.use(express.static(path.join(__dirname,'public')));
 //RUTAS MONGO
 app.use("/products",routeProd);
 app.use("/cart",routeCart);
-//RUTAS FIREBASE
-app.use("/productfb",prodfirebase);
+app.use("/session",loginsession);
 
 
 
