@@ -12,7 +12,7 @@ route.use(
   session({
     store: MongoStore.create({
       mongoUrl:
-        "mongodb+srv://ivansosa:ivancoder123@clustercoder.uppwp.mongodb.net/ivandb?retryWrites=true&w=majority",
+        "mongodb+srv://ivansosa:ivancoder123@clustercoder.uppwp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
       mongoOptions: advancedOptions,
     }),
     secret: "abcd1234",
@@ -27,7 +27,8 @@ route.use(
 
 
 route.get("/",(req,res)=>{
-  return res.json({info:req.session})
+  // return res.json({info:req.session})
+  req.session.user = "ivan"
   })
 
 route.post("/",(req,res)=>{
